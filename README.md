@@ -1,4 +1,6 @@
-Simple C snake clone, using NCurse. Support for Windows _maybe_.
+# Description
+
+> **Simple C snake clone, using NCurse. Support for Windows _maybe_.**
 
 # Command I used for compilation:
 
