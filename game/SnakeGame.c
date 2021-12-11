@@ -9,6 +9,7 @@ void tick(SnakeGame *game) {
     game->stopped = true;
   } else {
     if (game->snake->head->vector.x == game->board.apples[0].x && game->snake->head->vector.y == game->board.apples[0].y) {
+      game->sound = true;
       doTick(game->snake, true);
       randomizeApple(&game->board);
     } else {

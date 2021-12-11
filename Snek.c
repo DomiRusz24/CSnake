@@ -8,6 +8,8 @@ int main() {
 
   snake = malloc(sizeof(SnakeGame));
 
+  snake->sound = false;
+
   snake->snake = malloc(sizeof(Snake));
   snake->stopped = false;
   snake->board.xSize = 20;
@@ -40,6 +42,7 @@ int main() {
       snake->tick = 0;
       tick(snake);
       display(snake);
+      snake->sound = false;
     }
 
     sleep(10);

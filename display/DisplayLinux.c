@@ -17,11 +17,16 @@ void display(SnakeGame *game) {
   Body *current = game->snake->tail;
 
   attron(COLOR_PAIR(2));
-  while (current != NULL) {
+  while (current != game->snake->head) {
     mvprintw(current->vector.y + 1, current->vector.x + 1, "o");
     current = current->next;
   }
+  mvprintw(current->vector.y + 1, current->vector.x + 1, "%c", directionToChar(game->snake->direction));
   attroff(COLOR_PAIR(2));
+
+  if (game->sound) {
+    beep();
+  }
 
   refresh();
 }

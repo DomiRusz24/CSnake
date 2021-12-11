@@ -46,6 +46,23 @@ static Point directionToVector(Direction dir) {
   return p;
 }
 
+static char directionToChar(Direction dir) {
+  switch (dir) {
+  case UP: {
+    return '^';
+  }
+  case DOWN: {
+    return 'v';
+  }
+  case LEFT: {
+    return '<';
+  }
+  case RIGHT: {
+    return '>';
+  }
+  }
+}
+
 void setDirection(Snake *snake, Direction dir);
 
 void appendSnake(Snake *snake, Point location, bool extend);
