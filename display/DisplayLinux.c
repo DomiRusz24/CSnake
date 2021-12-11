@@ -4,24 +4,24 @@
 void display(SnakeGame *game) {
   attron(COLOR_PAIR(1));
   for (int y = 0; y < game->board.ySize; y++) {
-    for (int x = 0; x < game->board.xSize; x++) {
-      mvprintw((y + 1), (x + 1), "█");
+    for (int x = 0; x < 2 * game->board.xSize; x++) {
+      mvprintw((y + 1), ((x) + 1), "█");
     }
   }
   attroff(COLOR_PAIR(1));
 
   attron(COLOR_PAIR(3));
-  mvprintw(game->board.apples[0].y + 1, game->board.apples[0].x + 1, "x");
+  mvprintw(game->board.apples[0].y + 1, (game->board.apples[0].x * 2) + 1, "■");
   attroff(COLOR_PAIR(3));
 
   Body *current = game->snake->tail;
 
   attron(COLOR_PAIR(2));
+  mvprintw(game->snake->head->vector.y + 1, (game->snake->head->vector.x * 2) + 1, "%c", directionToChar(game->snake->direction));
   while (current != game->snake->head) {
-    mvprintw(current->vector.y + 1, current->vector.x + 1, "o");
+    mvprintw(current->vector.y + 1, (current->vector.x * 2) + 1, "o");
     current = current->next;
   }
-  mvprintw(current->vector.y + 1, current->vector.x + 1, "%c", directionToChar(game->snake->direction));
   attroff(COLOR_PAIR(2));
 
   if (game->sound) {
@@ -47,17 +47,20 @@ void init(SnakeGame *game) {
   init_pair(1, COLOR_BLUE, COLOR_BLUE);
   init_pair(2, COLOR_GREEN, COLOR_BLUE);
   init_pair(3, COLOR_RED, COLOR_BLUE);
+  init_pair(4, COLOR_WHITE, COLOR_BLUE);
+
+  attron(COLOR_PAIR(4));
 
   mvprintw(0, 0, "╔");
   mvprintw(game->board.ySize + 1, 0, "╚");
-  mvprintw(0, game->board.xSize + 1, "╗");
-  mvprintw(game->board.ySize + 1, game->board.xSize + 1, "╝");
+  mvprintw(0, (game->board.xSize * 2) + 1, "╗");
+  mvprintw(game->board.ySize + 1, (game->board.xSize * 2) + 1, "╝");
 
-  for (int i = 1; i <= game->board.xSize; i++) {
+  for (int i = 1; i <= (game->board.xSize * 2); i++) {
     mvprintw(0, i, "═");
   }
 
-  for (int i = 1; i <= game->board.xSize; i++) {
+  for (int i = 1; i <= (game->board.xSize * 2); i++) {
     mvprintw(game->board.ySize + 1, i, "═");
   }
 
@@ -66,8 +69,10 @@ void init(SnakeGame *game) {
   }
 
   for (int i = 1; i <= game->board.ySize; i++) {
-    mvprintw(i, game->board.xSize + 1, "║");
+    mvprintw(i, (game->board.xSize * 2) + 1, "║");
   }
+
+  attroff(COLOR_PAIR(4));
 
   display(game);
 }
