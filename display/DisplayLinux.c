@@ -11,14 +11,14 @@ void display(SnakeGame *game) {
   attroff(COLOR_PAIR(1));
 
   attron(COLOR_PAIR(3));
-  mvprintw(game->board.apples[0].y + 1, game->board.apples[0].x + 1, "█");
+  mvprintw(game->board.apples[0].y + 1, game->board.apples[0].x + 1, "x");
   attroff(COLOR_PAIR(3));
 
   Body *current = game->snake->tail;
 
   attron(COLOR_PAIR(2));
   while (current != NULL) {
-    mvprintw(current->vector.y + 1, current->vector.x + 1, "█");
+    mvprintw(current->vector.y + 1, current->vector.x + 1, "o");
     current = current->next;
   }
   attroff(COLOR_PAIR(2));
@@ -40,8 +40,8 @@ void init(SnakeGame *game) {
   nodelay(stdscr, TRUE);
   start_color();
   init_pair(1, COLOR_BLUE, COLOR_BLUE);
-  init_pair(2, COLOR_GREEN, COLOR_GREEN);
-  init_pair(3, COLOR_RED, COLOR_RED);
+  init_pair(2, COLOR_GREEN, COLOR_BLUE);
+  init_pair(3, COLOR_RED, COLOR_BLUE);
 
   mvprintw(0, 0, "╔");
   mvprintw(game->board.ySize + 1, 0, "╚");
