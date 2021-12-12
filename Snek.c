@@ -15,7 +15,7 @@ int main() {
   snake->board.xSize = 20;
   snake->board.ySize = 20;
 
-  snake->tickDelay = 50;
+  snake->tickDelay = 25;
 
   snake->snake->direction = UP;
   snake->snake->head = malloc(sizeof(Body));
@@ -49,5 +49,4 @@ int main() {
   }
 
   end(snake);
-
 }
