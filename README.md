@@ -15,5 +15,5 @@
 + Escape key to quit the game
 
 ## TODO
-+ Leaderboard`
++ Leaderboard
 
