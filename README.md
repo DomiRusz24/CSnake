@@ -3,7 +3,7 @@
 > **Simple C snake clone, using NCurse. Support for Windows _maybe_.**
 
 # Video
-[![CSnake](http://img.youtube.com/vi/IB-awTEb9VY/0.jpg)](http://www.youtube.com/watch?v=IB-awTEb9VY "CSnake")
+[![CSnake](http://img.youtube.com/vi/JkQRXaTPSZ0/0.jpg)](http://www.youtube.com/watch?v=JkQRXaTPSZ0 "CSnake")
 
 # Command I used for compilation:
 
